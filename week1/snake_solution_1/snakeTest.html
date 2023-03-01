@@ -22,7 +22,8 @@ ok.push(snakeEquals(snake[0] , {x: 10, y: 4} ));
 ok.push(snake.length === 4);
 
 // after eating food, snake has grown in size
-food = {x: 10, y: 3};
+food.x = 10;
+food.y = 3;
 nextBoard();
 ok.push(snake.length === 5);
 

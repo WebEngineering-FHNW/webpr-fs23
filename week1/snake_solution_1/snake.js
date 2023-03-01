@@ -9,13 +9,13 @@ let direction = north;
 const clockwise = [north, east, south, west, north];
 const countercw = [north, west, south, east, north];
 
-let snake = [
+const snake = [
     {x: 10, y: 5},
     {x: 10, y: 6},
     {x: 10, y: 7},
     {x: 10, y: 8},
 ];
-let food = {x: 15, y: 15};
+const food = {x: 15, y: 15};
 
 function snakeEquals(a, b) { return a.x === b.x && a.y === b.y }
 
@@ -24,24 +24,7 @@ function changeDirection(orientation) {
     direction = orientation[idx + 1];
 }
 
-function start() {
-    const canvas  = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-
-    const rightArrow = 39;
-    const leftArrow  = 37;
-    window.onkeydown = evt => {
-        const orientation = (evt.keyCode === rightArrow) ? clockwise : countercw;
-        changeDirection(orientation);
-    };
-
-    setInterval(() => {
-        nextBoard();
-        display(context);
-    }, 1000 / 5);
-}
-
-function nextBoard() {
+const nextBoard = () => {
     const maxX = 20;
     const maxY = 20;
     const oldHead = snake[0];
@@ -65,11 +48,12 @@ function nextBoard() {
     }
 
     snake.unshift(head); // put head at front of the list
-}
+};
 
-function display(context) {
+const display = context => {
     // clear
     context.fillStyle = "black";
+    // const canvas = document.getElementById("canvas");
     context.fillRect(0, 0, canvas.width, canvas.height);
     // draw all elements
     context.fillStyle = "cyan";
@@ -81,7 +65,24 @@ function display(context) {
     // draw food
     context.fillStyle = "red";
     fillBox(context, food);
-}
+};
+
+const start = () => {
+    const canvas  = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+
+    const rightArrow = 39;
+    // const leftArrow  = 37; // just in case we need this later
+    window.onkeydown = evt => {
+        const orientation = (evt.keyCode === rightArrow) ? clockwise : countercw;
+        changeDirection(orientation);
+    };
+
+    setInterval(() => {
+        nextBoard();
+        display(context);
+    }, 1000 / 5);
+};
 
 function fillBox(context, element) {
     context.fillRect(element.x * 20 + 1, element.y * 20 + 1, 18, 18);
