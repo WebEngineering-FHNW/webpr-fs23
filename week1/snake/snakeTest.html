@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html><head></head><body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snake Test</title>
+</head><body>
 
 <h1>Testing Snake</h1>
 
-<script language="javascript" src="snake.js">
+<script src="snake.js">
 </script>
 <pre>
 
-<script language="javascript">
+<script >
 
-let ok = [];
+const ok = [];
 
 // before start, snake is in start position
 ok.push(snakeEquals(snake[0] , {x: 10, y: 5} ));
@@ -55,4 +59,4 @@ if ( ok.every( elem => elem) ) {
 
 </pre>
 </body>
-<html>
+</html>
