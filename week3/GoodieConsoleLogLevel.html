@@ -18,39 +18,39 @@
     };
 
     // starting state
-    const logAll = () => {
-        console.error("error", longRunning("error"));
-        console.warn ("warn",  longRunning("warn") );
-        console.info ("info",  longRunning("info") );
-        console.log  ("log",   longRunning("log")  );
-        console.debug("debug", longRunning("debug"));
-    }
+    // const logAll = () => {
+    //     console.error("error", longRunning("error"));
+    //     console.warn ("warn",  longRunning("warn") );
+    //     console.info ("info",  longRunning("info") );
+    //     console.log  ("log",   longRunning("log")  );
+    //     console.debug("debug", longRunning("debug"));
+    // }
 
-    /* constants
+    /* constants */
     const LEVEL_NONE    = -1;
     const LEVEL_ERROR   =  0;
     const LEVEL_WARN    =  1;
     const LEVEL_INFO    =  2;
     const LEVEL_LOG     =  3;
     const LEVEL_DEBUG   =  4;
-    let logLevel = LEVEL_LOG;
-    */
+    let logLevel = LEVEL_NONE;
 
-/*    // strict version (not working as desired, yet)
-    const error = args => { if (logLevel >= LEVEL_ERROR) console.error(args); }
-    const warn  = args => { if (logLevel >= LEVEL_WARN)  console.warn (args); }
-    const info  = args => { if (logLevel >= LEVEL_INFO)  console.info (args); }
-    const log   = args => { if (logLevel >= LEVEL_LOG)   console.log  (args); }
-    const debug = args => { if (logLevel >= LEVEL_DEBUG) console.debug(args); }
+
+/*    // strict version (not working as desired, yet)*/
+    const error = argsF => { if (logLevel >= LEVEL_ERROR) console.error(argsF()); }
+    const warn  = argsF => { if (logLevel >= LEVEL_WARN)  console.warn (argsF()); }
+    const info  = argsF => { if (logLevel >= LEVEL_INFO)  console.info (argsF()); }
+    const log   = argsF => { if (logLevel >= LEVEL_LOG)   console.log  (argsF()); }
+    const debug = argsF => { if (logLevel >= LEVEL_DEBUG) console.debug(argsF()); }
 
     const logAll = () => {
-        error("error", longRunning("error"));
-        warn ("warn",  longRunning("warn") );
-        info ("info",  longRunning("info") );
-        log  ("log",   longRunning("log")  );
-        debug("debug", longRunning("debug"));
+        error(() => longRunning("error"));
+        warn (() => longRunning("warn") );
+        info (() => longRunning("info") );
+        log  (() => longRunning("log")  );
+        debug(() => longRunning("debug"));
     }
-*/
+
 
 </script>
 </pre>
