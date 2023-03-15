@@ -40,16 +40,20 @@ function changeDirection(orientation) {
  * but in this case the application should not crash randomly
 * @return Either ErrorMessage or HTMLElement
 */
-function safeGetElementById(id) {
+function eitherElementByIdOrErrorMessage(id) {
     const result = document.getElementById(id);
-    return result === undefined; // todo: your code here
+    return (null === result)
+           ? Left("Cannot access element with id: '" + id + "'")
+           : Right(result);
 }
 
 const log = s => console.log(s);
 
 function start() {
+    eitherElementByIdOrErrorMessage("canvas")
+       (console.error)
+       (startWithCanvas);
 
-    // todo: if safeGetElementById("canvas") yields an error message, log it. Otherwise startWithCanvas
 
 }
 
