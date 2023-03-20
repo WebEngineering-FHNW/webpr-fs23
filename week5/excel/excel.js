@@ -15,7 +15,7 @@ function startExcel() {
 
 function fillTable(container) {
     rows.forEach( row => {
-        let tr = document.createElement("TR");
+        const tr = document.createElement("TR");
         cols.forEach( col => {
             const td     = document.createElement("TD");
             const input  = document.createElement("INPUT");
