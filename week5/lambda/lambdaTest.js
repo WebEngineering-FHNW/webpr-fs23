@@ -15,3 +15,5 @@ document.writeln( fst(p) === 1 );
 document.writeln( snd(p) === 2 );
 
 const updatedPair = pair(fst(p) + 1)(snd(p));
+
+//

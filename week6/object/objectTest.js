@@ -5,13 +5,18 @@
 
     const myObject = {
         a   : 1,
-        foo : function() { return this.a }
-        // foo() { return this.a }              // syntactic sugar
+        // foo : function() { return this.a }
+        foo() { return this.a }              // syntactic sugar
     };
     ok.push(myObject.foo() === 1);
 
     const myFunctions = [ myObject.foo ];
-    // ok.push(myFunctions[0]() === 1);        // do functions capture "this" in their scope ?
+    ok.push(myFunctions[0]() !== 1);        // do functions capture "this" in their scope ?
+    ok.push(myFunctions[0]() === undefined);
+
+    myFunctions.a = 2;                      // "this" refers to the array
+    ok.push(myFunctions[0]() === 2);
+
 
     function outer( callback ) {
         const a = 2;
@@ -21,8 +26,12 @@
         const a = 3;
         return this.a;
     }
-    // ok.push(outer( inner ) === 2);          // guess what
-    // ok.push(outer( inner ) === 3);
+    ok.push(outer( inner ) === undefined);          // guess what
+    ok.push(outer( inner ) !== 2);
+    ok.push(outer( inner ) !== 3);
+
+    window.a = 4;                           // global scope
+    ok.push(outer( inner ) === 4);
 
     report("this-is-an-issue", ok);
 }) ();
