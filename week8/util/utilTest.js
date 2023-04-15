@@ -30,7 +30,7 @@
     report("util-times2", ok);
 }) ();
 
-( () => {
+( () => { // this has nothing to do with our utility, just for trying out jsDoc types
     const ok = [];
 
     // design by capability
@@ -38,11 +38,9 @@
     const functionUsingToString = x => x.toNumber();
 
     const ten = { toNumber: () => 10 };
-    const collect = functionUsingToString(ten);
+    const result = functionUsingToString(ten);
 
-    ok.push(collect.length === 10);
-    ok.push(collect[0]     ===  1);
-    ok.push(collect[9]     === 10);
+    ok.push(result === 10);
 
-    report("util-times3", ok);
+    report("util-toNumber", ok);
 }) ();
