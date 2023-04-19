@@ -23,7 +23,19 @@
         document.write(`<script src="${testName}/${testName}Test.js"></s`+'cript>');
     });
 
-    document.writeln("\nCheck possible errors in the console .")
+    document.writeln("\nCheck possible errors in the console .");
+
+    /**
+     * @type {  <_T_, _U_> (_T_) => ( ..._U_ ) => _T_ }
+     */
+    const first = x => _y => x;
+
+    /** @type { Boolean } */
+    const a = first(true)(12);
+
+    /** @type { String } */
+    const b = first("true")(12);
+
 
 </script>
 
