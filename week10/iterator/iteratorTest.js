@@ -22,9 +22,8 @@
 }) ();
 ( () => {
     const ok = [];
-    console.log(String([...Fib(10)]));
-    ok.push(String([...Fib(10)]) === "0,1,1,2,3,5,8");
 
+    ok.push(String([...Fib(10)]) === "0,1,1,2,3,5,8");
 
     report("fib", ok);
 }) ();
