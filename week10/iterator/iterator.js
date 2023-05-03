@@ -54,3 +54,18 @@ const Iterator = (startValue, whileFn, incrementFn) => {
  */
 
 const Range = n => /** @type { RangeType } */ Iterator(0, i => i < n, i => i + 1);
+
+/**
+ * Constructor of an iterator that emits fibonacci numbers.
+ * @param { Number } n - the upper limit until fibonacci numbers will be emitted, must not be negative.
+ * @return { IteratorType<Number> }
+ * @constructor
+ */
+const Fib = n => {
+    let prev = 1;
+    return Iterator(0, i => i < n, i => {
+        const result = prev + i;
+        prev = i;
+        return result;
+    });
+};
