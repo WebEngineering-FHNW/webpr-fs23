@@ -21,10 +21,10 @@ import { report }               from '../util/test.js'
 
     // this kind of test does not work with the bundler as it checks the erroneous assignment
     // try {
-    //     a = "shall not work";
-    //     ok.push(false);
+    //     a = "shall not work";   // this is expected to fail ...
+    //     ok.push(false);         // ... therefore this line is not reached ...
     // } catch (e) {
-    //     ok.push("exported variables are read-only.")
+    //     ok.push(true);          // ... but this one
     // }
 
     report("mod-singleton", ok);
