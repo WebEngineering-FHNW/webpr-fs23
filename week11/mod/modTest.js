@@ -20,12 +20,12 @@ import { report }               from '../util/test.js'
     // console.log(x); // newly introduced global x should not be visible but when using bundlers, it is
 
     // this kind of test does not work with the bundler as it checks the erroneous assignment
-    // try {
-    //     a = "shall not work";   // this is expected to fail ...
-    //     ok.push(false);         // ... therefore this line is not reached ...
-    // } catch (e) {
-    //     ok.push(true);          // ... but this one
-    // }
+    try {
+        a = "shall not work";   // this is expected to fail ...
+        ok.push(false);         // ... therefore this line is not reached ...
+    } catch (e) {
+        ok.push(true);          // ... but this one
+    }
 
     report("mod-singleton", ok);
 }) ();
